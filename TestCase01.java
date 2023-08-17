@@ -66,20 +66,31 @@ public class TestCase01 {
         }
         System.setOut(originalOut);
 
+        Boolean fail = false;
+
         for (int i = 0; i < testCases.length; i++) {
             if (results.containsKey(testCases[i])) {
                 System.out.println("InputTest passed for " + testCases[i]);
             } else {
                 System.out.println("InputTest failed for " + testCases[i]);
+                fail = true;
             }
         }
 
         for (int i = 0; i < negativeTestCases.length; i++) {
             if (results.containsKey(negativeTestCases[i])) {
                 System.out.println("InputTest failed for " + negativeTestCases[i]);
+                fail = true;
             } else {
                 System.out.println("InputTest passed for " + negativeTestCases[i]);
             }
+        }
+
+        if (fail) {
+            System.exit(1);
+        }
+        else {
+            System.exit(0);
         }
     }
 }
